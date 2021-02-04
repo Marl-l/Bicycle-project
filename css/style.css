@@ -577,20 +577,37 @@ header li:not(:last-child):after {
 }
 
 @media (max-width: 768px) {
+   .header {
+      padding: 0;
+   }
 
    .header .logo {
       display: none;
    }
-
+   
    .header .navigation {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
+      padding: 78px 10px 20px;
       background: #fff;
-      width: 280px;
+      position: absolute;
+      top: 0;
+      right: -300px;
+      height: 100vh;
+      width: 300px;
       transition: .3s;
       z-index: 11;
+   }
+
+   .menu-opened .navigation,
+   .menu-opened .menu-button {
+      position: fixed;
+   }
+
+   .menu-opened .navigation {
+      right: 0;
    }
 
    .header ul {
@@ -602,7 +619,7 @@ header li:not(:last-child):after {
       display: none;
    }
 
-   .header a {
+   .header li a {
       text-align: right;
       padding: 10px 0;
    }
@@ -628,6 +645,7 @@ header li:not(:last-child):after {
       height: 28px;
       width: 28px;
       cursor: pointer;
+      transition: 0.2s;
       z-index: 12;
    }
 
@@ -638,6 +656,10 @@ header li:not(:last-child):after {
       top: 13px;
       left: 0;
       background: #6dc196;
+      -webkit-transition: .2s;
+      -o-transition: .2s;
+      transition: .2s;
+      opacity: 1;
    }
 
    .menu-button:before,
@@ -649,6 +671,9 @@ header li:not(:last-child):after {
       left: 0;
       top: 0;
       background: #6dc196;
+      -webkit-transition: .2s;
+      -o-transition: .2s;
+      transition: .2s;
    }
 
    .menu-button:after {
@@ -656,13 +681,17 @@ header li:not(:last-child):after {
       bottom: 0;
    }
 
-   .menu-opened .menu-button,
-   .menu-opened .navigation {
-      position: fixed;
+   .menu-opened .menu-button span {
+      opacity: 0;
    }
 
-   .menu-opened .navigation {
-      right: 0;
+   .menu-opened .menu-button:before {
+      transform: rotate(-45deg);
+      top: 26px;
+   }
+
+   .menu-opened .menu-button::after {
+      transform: rotate(45deg);
    }
 
    .swiper-button-next,
@@ -697,8 +726,6 @@ header li:not(:last-child):after {
    .min-height {
       min-height: 600px;
    }
-
-
 }
 
 @media (max-width: 568px) {

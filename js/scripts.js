@@ -1,4 +1,7 @@
 $(document).ready(function () {
+
+  // Swiper-menu
+
   var mySwiper = new Swiper(".swiper-container", {
     loop: true,
 
@@ -18,6 +21,8 @@ $(document).ready(function () {
     },
   });
 
+  // Swiper-review
+
   const swiper = new Swiper(".review .swiper-container", {
     // Optional parameters
     loop: true,
@@ -31,6 +36,17 @@ $(document).ready(function () {
       disableOnInteraction: false,
     },
   });
+
+  // Mobile-menu 
+
+  $(".header")
+  .on("click", ".menu-button", function () {
+    $(".header")
+    .toggleClass("menu-opened");
+  });
+
+  // Anchor link
+
   $('a[href*="#"]')
   // Remove links that don't actually link to anything
   .not('[href="#"]')
@@ -51,7 +67,7 @@ $(document).ready(function () {
         event.preventDefault();
         $('html, body').animate({
           scrollTop: target.offset().top
-        }, 1000, function() {
+        }, 700, function() {
           // Callback after animation
           // Must change focus!
           var $target = $(target);
